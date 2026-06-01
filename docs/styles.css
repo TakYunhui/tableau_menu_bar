@@ -1,19 +1,19 @@
 :root {
   color-scheme: light;
-  --bg: #eef2f8;
-  --panel: #f7f9fd;
+  --bg: #eef3fb;
+  --panel: #f5f8fe;
   --panel-strong: #ffffff;
-  --panel-accent: #3f76f6;
-  --panel-accent-soft: #e7efff;
-  --border: #d7dfef;
-  --text: #4a5568;
-  --text-strong: #51606f;
-  --text-muted: #8f9bab;
-  --icon: #9eb1cb;
+  --panel-accent: #3f73f0;
+  --panel-accent-soft: #dfe9ff;
+  --border: #d8e1f0;
+  --text: #707b8d;
+  --text-strong: #5e6878;
+  --text-muted: #9ca8b8;
+  --icon: #c0cad8;
   --icon-active: #ffffff;
   --shadow: 0 10px 24px rgba(98, 117, 153, 0.12);
-  --subpanel-bg: #5f7898;
-  --subpanel-row-hover: rgba(255, 255, 255, 0.14);
+  --subpanel-bg: #6b84a3;
+  --subpanel-row-hover: rgba(255, 255, 255, 0.12);
   --subpanel-text: #f7fbff;
   --subpanel-muted: #d7e4f2;
 }
@@ -27,7 +27,7 @@ body {
   min-height: 100vh;
   background: var(--bg);
   color: var(--text);
-  font-family: "Segoe UI", "Malgun Gothic", sans-serif;
+  font-family: "Pretendard", "Segoe UI", "Malgun Gothic", sans-serif;
 }
 
 button {
@@ -61,8 +61,7 @@ button {
 }
 
 .menu-group.is-active {
-  background: var(--panel-accent);
-  box-shadow: var(--shadow);
+  box-shadow: none;
 }
 
 .menu-toggle {
@@ -77,14 +76,18 @@ button {
   color: var(--text-strong);
   text-align: left;
   cursor: pointer;
+  border-radius: 18px;
 }
 
 .menu-toggle:hover {
   background: rgba(63, 118, 246, 0.06);
 }
 
-.menu-group.is-active .menu-toggle {
+.menu-group.is-open > .menu-toggle,
+.menu-group.is-active > .menu-toggle {
   color: #ffffff;
+  background: linear-gradient(180deg, #4d7ef1 0%, #3f73f0 100%);
+  box-shadow: var(--shadow);
 }
 
 .menu-copy {
@@ -116,7 +119,8 @@ button {
   word-break: normal;
 }
 
-.menu-group.is-active .menu-icon {
+.menu-group.is-open > .menu-toggle .menu-icon,
+.menu-group.is-active > .menu-toggle .menu-icon {
   color: var(--icon-active);
 }
 
@@ -134,7 +138,8 @@ button {
   transition: transform 140ms ease, color 140ms ease;
 }
 
-.menu-group.is-active .menu-arrow {
+.menu-group.is-open > .menu-toggle .menu-arrow,
+.menu-group.is-active > .menu-toggle .menu-arrow {
   color: #dfe8ff;
 }
 
@@ -147,6 +152,7 @@ button {
   gap: 2px;
   padding: 0;
   background: var(--subpanel-bg);
+  border-radius: 0;
 }
 
 .group-panel[hidden] {
@@ -173,6 +179,7 @@ button {
   background: var(--subpanel-row-hover);
 }
 
+.menu-group.is-open .group-panel,
 .menu-group.is-active .group-panel {
   background: var(--subpanel-bg);
 }
@@ -199,5 +206,5 @@ button {
 }
 
 .group-panel .child-row:last-child {
-  padding-bottom: 18px;
+  padding-bottom: 14px;
 }

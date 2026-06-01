@@ -107,9 +107,9 @@ function createChildItem(child) {
 
 function createGroup(item) {
   const group = document.createElement("article");
-  group.className = `menu-group${isItemActive(item) ? " is-active" : ""}`;
-
   const isOpen = state.openIds.has(item.id);
+  group.className = `menu-group${isItemActive(item) ? " is-active" : ""}${isOpen ? " is-open" : ""}`;
+
   const toggle = document.createElement("button");
   toggle.type = "button";
   toggle.className = "menu-toggle";
