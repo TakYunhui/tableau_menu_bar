@@ -15,7 +15,7 @@ window.TABLEAU_MENU_CONFIG = [
   {
     id: "finance-hr",
     label: "손익·재무·인사",
-    displayLabel: "손익·재무\n인사",
+    displayLabel: "손익·재무·인사",
     icon: "finance",
     children: [
       {
