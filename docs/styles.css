@@ -32,31 +32,31 @@ button {
 
 .shell {
   width: 100%;
-  max-width: 100px;
+  max-width: 200px;
   min-height: 100vh;
   padding: 0;
 }
 
 .sidebar-card {
-  width: 100px;
+  width: 200px;
   min-height: 100vh;
   background: linear-gradient(180deg, #f5f7fb 0%, #eef3fb 100%);
   border-right: 1px solid var(--border);
 }
 
 .top-band {
-  height: 14px;
+  height: 18px;
   background: #213d73;
 }
 
 .menu-root {
   display: grid;
-  gap: 8px;
-  padding: 14px 8px 18px;
+  gap: 10px;
+  padding: 18px 14px 24px;
 }
 
 .menu-group {
-  border-radius: 14px;
+  border-radius: 18px;
   background: transparent;
   overflow: hidden;
 }
@@ -69,7 +69,8 @@ button {
 .menu-toggle {
   display: flex;
   width: 100%;
-  padding: 14px 10px;
+  align-items: center;
+  padding: 16px 14px;
   border: 0;
   background: transparent;
   color: var(--text-strong);
@@ -92,23 +93,23 @@ button {
 .menu-heading {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   min-width: 0;
 }
 
 .menu-icon {
-  width: 18px;
-  height: 18px;
+  width: 21px;
+  height: 21px;
   flex: none;
   color: var(--icon);
 }
 
 .menu-title {
   color: inherit;
-  font-size: 17px;
+  font-size: 21px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1.15;
+  line-height: 1.1;
   white-space: pre-line;
   word-break: keep-all;
 }
@@ -118,9 +119,9 @@ button {
 }
 
 .menu-arrow {
-  margin-left: 4px;
+  margin-left: 10px;
   color: var(--text-muted);
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1;
   transition: transform 140ms ease, color 140ms ease;
 }
@@ -135,8 +136,8 @@ button {
 
 .group-panel {
   display: grid;
-  gap: 6px;
-  padding: 0 8px 10px;
+  gap: 8px;
+  padding: 0 14px 14px;
   background: transparent;
 }
 
@@ -147,10 +148,10 @@ button {
 .child-row {
   display: block;
   width: 100%;
-  padding: 10px 10px 10px 12px;
+  padding: 12px 12px 12px 14px;
   border: 0;
-  border-left: 3px solid transparent;
-  border-radius: 12px;
+  border-left: 4px solid transparent;
+  border-radius: 14px;
   background: #f0f4fb;
   color: var(--text);
   text-align: left;
@@ -179,9 +180,9 @@ button {
 
 .child-label {
   display: block;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.4;
   word-break: keep-all;
 }
 
