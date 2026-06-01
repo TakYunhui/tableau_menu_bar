@@ -49,6 +49,7 @@ function toggleGroup(itemId) {
   if (state.openIds.has(itemId)) {
     state.openIds.delete(itemId);
   } else {
+    state.openIds.clear();
     state.openIds.add(itemId);
   }
 
