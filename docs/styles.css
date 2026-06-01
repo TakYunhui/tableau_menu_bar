@@ -94,8 +94,8 @@ button {
 }
 
 .menu-icon {
-  width: 21px;
-  height: 21px;
+  width: 24px;
+  height: 24px;
   flex: none;
   color: var(--icon);
 }
@@ -117,7 +117,8 @@ button {
 .menu-arrow {
   margin-left: 10px;
   color: var(--text-muted);
-  font-size: 22px;
+  font-size: 26px;
+  font-weight: 600;
   line-height: 1;
   transition: transform 140ms ease, color 140ms ease;
 }
@@ -132,9 +133,9 @@ button {
 
 .group-panel {
   display: grid;
-  gap: 8px;
-  padding: 0 14px 14px;
-  background: transparent;
+  gap: 2px;
+  padding: 0 0 10px;
+  background: rgba(15, 38, 58, 0.92);
 }
 
 .group-panel[hidden] {
@@ -144,12 +145,12 @@ button {
 .child-row {
   display: block;
   width: 100%;
-  padding: 12px 12px 12px 14px;
+  padding: 14px 16px 14px 18px;
   border: 0;
   border-left: 4px solid transparent;
-  border-radius: 14px;
-  background: #f0f4fb;
-  color: var(--text);
+  border-radius: 0;
+  background: transparent;
+  color: #eff5fb;
   text-align: left;
 }
 
@@ -158,16 +159,11 @@ button {
 }
 
 .child-row.is-link:hover {
-  background: var(--panel-accent-soft);
+  background: rgba(255, 255, 255, 0.06);
 }
 
-.menu-group.is-active .child-row {
-  background: rgba(255, 255, 255, 0.18);
-  color: #f6f9ff;
-}
-
-.menu-group.is-active .child-row.is-link:hover {
-  background: rgba(255, 255, 255, 0.26);
+.menu-group.is-active .group-panel {
+  background: rgba(15, 38, 58, 0.94);
 }
 
 .child-copy {
@@ -177,26 +173,16 @@ button {
 .child-label {
   display: block;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.4;
   word-break: keep-all;
 }
 
 .kind-entry {
-  border-left-color: var(--panel-accent);
-}
-
-.kind-tab {
-  border-left-color: #b7c4da;
+  border-left-color: #59b6ff;
 }
 
 .kind-planned {
-  border-left-color: #d7deea;
-  color: var(--text-muted);
-  background: #f4f6fb;
-}
-
-.menu-group.is-active .kind-planned {
-  color: #e9efff;
-  background: rgba(255, 255, 255, 0.14);
+  border-left-color: rgba(255, 255, 255, 0.18);
+  color: #b9c6d2;
 }
