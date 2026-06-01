@@ -9,9 +9,13 @@
   --text: #4a5568;
   --text-strong: #51606f;
   --text-muted: #8f9bab;
-  --icon: #c0cad8;
+  --icon: #9eb1cb;
   --icon-active: #ffffff;
   --shadow: 0 10px 24px rgba(98, 117, 153, 0.12);
+  --subpanel-bg: #5f7898;
+  --subpanel-row-hover: rgba(255, 255, 255, 0.14);
+  --subpanel-text: #f7fbff;
+  --subpanel-muted: #d7e4f2;
 }
 
 * {
@@ -47,7 +51,7 @@ button {
 .menu-root {
   display: grid;
   gap: 10px;
-  padding: 16px 14px 24px;
+  padding: 16px 0 24px;
 }
 
 .menu-group {
@@ -65,7 +69,7 @@ button {
   display: flex;
   width: 100%;
   align-items: center;
-  padding: 16px 14px;
+  padding: 16px 18px;
   min-height: 72px;
   border: 0;
   background: transparent;
@@ -89,13 +93,13 @@ button {
 .menu-heading {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   min-width: 0;
 }
 
 .menu-icon {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   flex: none;
   color: var(--icon);
 }
@@ -115,7 +119,7 @@ button {
 }
 
 .menu-arrow {
-  margin-left: 10px;
+  margin-left: 12px;
   color: var(--text-muted);
   font-size: 26px;
   font-weight: 600;
@@ -135,7 +139,7 @@ button {
   display: grid;
   gap: 2px;
   padding: 0 0 10px;
-  background: rgba(15, 38, 58, 0.92);
+  background: var(--subpanel-bg);
 }
 
 .group-panel[hidden] {
@@ -145,12 +149,12 @@ button {
 .child-row {
   display: block;
   width: 100%;
-  padding: 14px 16px 14px 18px;
+  padding: 14px 18px 14px 22px;
   border: 0;
   border-left: 4px solid transparent;
   border-radius: 0;
   background: transparent;
-  color: #eff5fb;
+  color: var(--subpanel-text);
   text-align: left;
 }
 
@@ -159,11 +163,11 @@ button {
 }
 
 .child-row.is-link:hover {
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--subpanel-row-hover);
 }
 
 .menu-group.is-active .group-panel {
-  background: rgba(15, 38, 58, 0.94);
+  background: var(--subpanel-bg);
 }
 
 .child-copy {
@@ -184,5 +188,5 @@ button {
 
 .kind-planned {
   border-left-color: rgba(255, 255, 255, 0.18);
-  color: #b9c6d2;
+  color: var(--subpanel-muted);
 }
