@@ -32,8 +32,8 @@ function isItemActive(item) {
     return true;
   }
 
-  const entryUrl = item.entry && item.entry.url;
-  return Boolean(entryUrl && currentUrl.includes(entryUrl));
+  const children = item.children || [];
+  return children.some((child) => Boolean(child.url && currentUrl.includes(child.url)));
 }
 
 function moveSameTab(targetUrl, label) {
@@ -106,33 +106,6 @@ function createChildItem(child) {
 function createGroup(item) {
   const group = document.createElement("article");
   group.className = `menu-group${isItemActive(item) ? " is-active" : ""}`;
-
-  if (item.entry && item.entry.url) {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "menu-link";
-    button.addEventListener("click", () => {
-      moveSameTab(item.entry.url, item.label);
-    });
-
-    const copy = document.createElement("div");
-    copy.className = "menu-copy";
-
-    const title = document.createElement("span");
-    title.className = "menu-title";
-    title.textContent = item.label;
-    copy.appendChild(title);
-
-    button.appendChild(copy);
-
-    const arrow = document.createElement("span");
-    arrow.className = "menu-arrow";
-    arrow.textContent = "↗";
-    button.appendChild(arrow);
-
-    group.appendChild(button);
-    return group;
-  }
 
   const isOpen = state.openIds.has(item.id);
   const toggle = document.createElement("button");
