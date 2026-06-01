@@ -2,6 +2,8 @@ window.TABLEAU_MENU_CONFIG = [
   {
     id: "overview",
     label: "종합",
+    displayLabel: "종합",
+    icon: "overview",
     children: [
       {
         label: "경영 종합",
@@ -13,6 +15,8 @@ window.TABLEAU_MENU_CONFIG = [
   {
     id: "finance-hr",
     label: "손익·재무·인사",
+    displayLabel: "손익·재무\n인사",
+    icon: "finance",
     children: [
       {
         label: "손익·재무 요약",
@@ -37,6 +41,8 @@ window.TABLEAU_MENU_CONFIG = [
   {
     id: "production",
     label: "생산",
+    displayLabel: "생산",
+    icon: "production",
     children: [
       {
         label: "생산 현황",
@@ -57,6 +63,8 @@ window.TABLEAU_MENU_CONFIG = [
   {
     id: "sales",
     label: "영업",
+    displayLabel: "영업",
+    icon: "sales",
     children: [
       {
         label: "영업 현황",
@@ -81,6 +89,8 @@ window.TABLEAU_MENU_CONFIG = [
   {
     id: "purchase",
     label: "구매",
+    displayLabel: "구매",
+    icon: "purchase",
     children: [
       {
         label: "구매 현황",

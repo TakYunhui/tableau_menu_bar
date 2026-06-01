@@ -1,22 +1,17 @@
 :root {
-  color-scheme: dark;
-  --bg: #d8e0e8;
-  --shell-top: #1d2230;
-  --shell-bottom: #2c3346;
-  --panel: #262c39;
-  --panel-strong: #181c26;
-  --panel-muted: #31394a;
-  --text: #f5f7fb;
-  --muted: #9aa4b5;
-  --accent: #48d9d0;
-  --accent-soft: rgba(72, 217, 208, 0.16);
-  --accent-strong: #88efe8;
-  --border: rgba(255, 255, 255, 0.08);
-  --warning-bg: rgba(244, 173, 68, 0.16);
-  --warning-text: #ffd28a;
-  --ready-bg: rgba(72, 217, 208, 0.16);
-  --ready-text: #9ef4ee;
-  --shadow: 0 28px 60px rgba(13, 16, 24, 0.28);
+  color-scheme: light;
+  --bg: #eef2f8;
+  --panel: #f7f9fd;
+  --panel-strong: #ffffff;
+  --panel-accent: #3f76f6;
+  --panel-accent-soft: #e7efff;
+  --border: #d7dfef;
+  --text: #4a5568;
+  --text-strong: #51606f;
+  --text-muted: #8f9bab;
+  --icon: #c0cad8;
+  --icon-active: #ffffff;
+  --shadow: 0 10px 24px rgba(98, 117, 153, 0.12);
 }
 
 * {
@@ -26,9 +21,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background:
-    radial-gradient(circle at bottom left, rgba(72, 217, 208, 0.22), transparent 26%),
-    linear-gradient(140deg, #dfe6ee 0%, #d1dae4 52%, #c5d0db 100%);
+  background: var(--bg);
   color: var(--text);
   font-family: "Segoe UI", "Malgun Gothic", sans-serif;
 }
@@ -39,117 +32,101 @@ button {
 
 .shell {
   width: 100%;
-  max-width: 380px;
+  max-width: 100px;
   min-height: 100vh;
-  padding: 20px 16px;
+  padding: 0;
 }
 
 .sidebar-card {
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  background: linear-gradient(180deg, var(--shell-top) 0%, var(--shell-bottom) 100%);
-  box-shadow: var(--shadow);
+  width: 100px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f5f7fb 0%, #eef3fb 100%);
+  border-right: 1px solid var(--border);
 }
 
-.eyebrow,
-.section-kicker {
-  margin: 0;
-  color: var(--accent-strong);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.section-head h2 {
-  margin: 0;
-}
-
-.status {
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.status.is-pending,
-.status.is-warning {
-  background: var(--warning-bg);
-  color: var(--warning-text);
-}
-
-.status.is-ready {
-  background: var(--ready-bg);
-  color: var(--ready-text);
-}
-
-.sidebar-card {
-  padding: 18px 14px 14px;
-}
-
-.section-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-.section-head h2 {
-  margin-top: 6px;
-  font-size: 19px;
+.top-band {
+  height: 14px;
+  background: #213d73;
 }
 
 .menu-root {
   display: grid;
-  gap: 10px;
+  gap: 8px;
+  padding: 14px 8px 18px;
 }
 
 .menu-group {
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 18px;
-  background: rgba(11, 14, 20, 0.18);
+  border-radius: 14px;
+  background: transparent;
   overflow: hidden;
 }
 
 .menu-group.is-active {
-  border-color: rgba(72, 217, 208, 0.45);
-  box-shadow: inset 3px 0 0 var(--accent);
+  background: var(--panel-accent);
+  box-shadow: var(--shadow);
 }
 
-.menu-link,
 .menu-toggle {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   width: 100%;
-  padding: 14px 15px;
+  padding: 14px 10px;
   border: 0;
   background: transparent;
-  color: var(--text);
+  color: var(--text-strong);
   text-align: left;
   cursor: pointer;
 }
 
-.menu-link:hover,
 .menu-toggle:hover {
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(63, 118, 246, 0.06);
+}
+
+.menu-group.is-active .menu-toggle {
+  color: #ffffff;
 }
 
 .menu-copy {
-  display: block;
+  flex: 1;
+}
+
+.menu-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.menu-icon {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  color: var(--icon);
 }
 
 .menu-title {
-  font-size: 15px;
+  color: inherit;
+  font-size: 17px;
   font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  white-space: pre-line;
+  word-break: keep-all;
+}
+
+.menu-group.is-active .menu-icon {
+  color: var(--icon-active);
 }
 
 .menu-arrow {
-  color: var(--accent-strong);
-  font-size: 20px;
+  margin-left: 4px;
+  color: var(--text-muted);
+  font-size: 18px;
   line-height: 1;
-  transition: transform 140ms ease;
+  transition: transform 140ms ease, color 140ms ease;
+}
+
+.menu-group.is-active .menu-arrow {
+  color: #dfe8ff;
 }
 
 .menu-arrow.is-open {
@@ -158,9 +135,9 @@ button {
 
 .group-panel {
   display: grid;
-  gap: 8px;
-  padding: 0 12px 12px;
-  background: rgba(255, 255, 255, 0.02);
+  gap: 6px;
+  padding: 0 8px 10px;
+  background: transparent;
 }
 
 .group-panel[hidden] {
@@ -168,28 +145,32 @@ button {
 }
 
 .child-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 12px 12px 12px 14px;
-  border-left: 2px solid rgba(72, 217, 208, 0.42);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.03);
-}
-
-.child-row.is-link {
+  display: block;
   width: 100%;
-  border-top: 0;
-  border-right: 0;
-  border-bottom: 0;
-  cursor: pointer;
+  padding: 10px 10px 10px 12px;
+  border: 0;
+  border-left: 3px solid transparent;
+  border-radius: 12px;
+  background: #f0f4fb;
   color: var(--text);
   text-align: left;
 }
 
+.child-row.is-link {
+  cursor: pointer;
+}
+
 .child-row.is-link:hover {
-  background: rgba(72, 217, 208, 0.08);
+  background: var(--panel-accent-soft);
+}
+
+.menu-group.is-active .child-row {
+  background: rgba(255, 255, 255, 0.18);
+  color: #f6f9ff;
+}
+
+.menu-group.is-active .child-row.is-link:hover {
+  background: rgba(255, 255, 255, 0.26);
 }
 
 .child-copy {
@@ -197,30 +178,28 @@ button {
 }
 
 .child-label {
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.chip {
-  flex: none;
-  padding: 4px 8px;
-  border-radius: 999px;
-  font-size: 10px;
+  display: block;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  line-height: 1.35;
+  word-break: keep-all;
 }
 
-.chip-entry {
-  background: rgba(72, 217, 208, 0.18);
-  color: var(--accent-strong);
+.kind-entry {
+  border-left-color: var(--panel-accent);
 }
 
-.chip-tab {
-  background: rgba(255, 255, 255, 0.08);
-  color: #d9dfeb;
+.kind-tab {
+  border-left-color: #b7c4da;
 }
 
-.chip-planned {
-  background: rgba(255, 213, 128, 0.16);
-  color: #ffe0a4;
+.kind-planned {
+  border-left-color: #d7deea;
+  color: var(--text-muted);
+  background: #f4f6fb;
+}
+
+.menu-group.is-active .kind-planned {
+  color: #e9efff;
+  background: rgba(255, 255, 255, 0.14);
 }

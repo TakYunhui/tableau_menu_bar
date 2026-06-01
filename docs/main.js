@@ -4,13 +4,7 @@ const state = {
   openIds: new Set(),
 };
 
-const statusEl = document.getElementById("status");
 const menuRootEl = document.getElementById("menu-root");
-
-function setStatus(message, tone) {
-  statusEl.textContent = message;
-  statusEl.className = `status ${tone}`;
-}
 
 function getCurrentUrl() {
   try {
@@ -38,11 +32,8 @@ function isItemActive(item) {
 
 function moveSameTab(targetUrl, label) {
   if (!targetUrl) {
-    setStatus(`${label} URL이 아직 없다`, "is-warning");
     return;
   }
-
-  setStatus(`${label} 이동 중`, "is-pending");
 
   try {
     window.top.location.href = targetUrl;
@@ -64,24 +55,35 @@ function toggleGroup(itemId) {
   renderMenu();
 }
 
-function createBadge(kind) {
-  const badge = document.createElement("span");
-  badge.className = `chip chip-${kind}`;
+function createIcon(iconKey) {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("aria-hidden", "true");
+  svg.classList.add("menu-icon");
 
-  if (kind === "entry") {
-    badge.textContent = "첫 탭";
-  } else if (kind === "tab") {
-    badge.textContent = "상단 탭";
-  } else {
-    badge.textContent = "추후";
-  }
+  const stroke = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  stroke.setAttribute("fill", "none");
+  stroke.setAttribute("stroke", "currentColor");
+  stroke.setAttribute("stroke-linecap", "round");
+  stroke.setAttribute("stroke-linejoin", "round");
+  stroke.setAttribute("stroke-width", "1.8");
 
-  return badge;
+  const iconPaths = {
+    overview: "M4 6h16M4 12h10M4 18h13",
+    finance: "M5 17V9m5 8V5m5 12v-6m5 6V7",
+    production: "M5 18V9l7-4 7 4v9M9 18v-4h6v4",
+    sales: "M5 17l4-4 3 3 6-7",
+    purchase: "M4 6h2l2.4 8.2a1 1 0 0 0 1 .8H18a1 1 0 0 0 1-.8L21 9H8",
+  };
+
+  stroke.setAttribute("d", iconPaths[iconKey] || iconPaths.overview);
+  svg.appendChild(stroke);
+  return svg;
 }
 
 function createChildItem(child) {
   const row = document.createElement(child.url ? "button" : "div");
-  row.className = `child-row${child.url ? " is-link" : ""}`;
+  row.className = `child-row kind-${child.kind}${child.url ? " is-link" : ""}`;
 
   if (child.url) {
     row.type = "button";
@@ -99,7 +101,6 @@ function createChildItem(child) {
   textWrap.appendChild(label);
 
   row.appendChild(textWrap);
-  row.appendChild(createBadge(child.kind));
   return row;
 }
 
@@ -119,10 +120,15 @@ function createGroup(item) {
   const copy = document.createElement("div");
   copy.className = "menu-copy";
 
+  const heading = document.createElement("div");
+  heading.className = "menu-heading";
+  heading.appendChild(createIcon(item.icon));
+
   const title = document.createElement("span");
   title.className = "menu-title";
-  title.textContent = item.label;
-  copy.appendChild(title);
+  title.textContent = item.displayLabel || item.label;
+  heading.appendChild(title);
+  copy.appendChild(heading);
 
   toggle.appendChild(copy);
 
@@ -155,16 +161,13 @@ function renderMenu() {
 
 async function initializeTableauExtension() {
   if (!window.tableau || !window.tableau.extensions) {
-    setStatus("미리보기", "is-warning");
     return;
   }
 
   try {
     await window.tableau.extensions.initializeAsync();
-    setStatus("연결됨", "is-ready");
   } catch (error) {
-    const message = error && error.message ? error.message : "초기화 제한";
-    setStatus(message, "is-warning");
+    // Ignore preview-only initialization failures in the compact UI.
   }
 }
 
