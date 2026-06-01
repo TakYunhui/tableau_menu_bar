@@ -16,16 +16,24 @@ Tableau Dashboard Extension 기반 Navigator POC 저장소.
 ## 현재 구현 상태
 
 - 좌측 Navigator는 기본적으로 전부 닫힌 상태로 시작한다.
-- `생산` 카테고리는 첫 탭 주소가 있어 바로 이동 가능하다.
-- 나머지 카테고리는 URL이 아직 없어 구조만 먼저 펼쳐볼 수 있다.
-- 같은 게시글 내부 탭은 `상단 탭` 배지로만 보여주고, 현재는 좌측 메뉴 직접 이동 대상에서 제외했다.
+- `손익·재무·인사`, `생산`, `영업`, `구매`는 카테고리 클릭 시 각 게시글의 첫 화면으로 바로 이동한다.
+- `종합`만 아직 URL이 없어 접힘 구조로 유지한다.
+- 상단 설명 박스와 운영 원칙 박스는 제거하고 메뉴만 남겼다.
 
 ## 현재 연결된 URL
 
+- 손익·재무·인사
+  - 진입 대시보드: `손익·재무 요약`
+  - URL: `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17785666538950/sheet0`
 - 생산
   - 진입 대시보드: `생산 현황`
   - URL: `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/2/sheet4`
-  - 내부 탭: `생산 효율`
+- 영업
+  - 진입 대시보드: `영업 현황`
+  - URL: `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17790851223830/sheet1_1`
+- 구매
+  - 진입 대시보드: `구매 현황`
+  - URL: `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/RE/sheet0`
 
 ## 메뉴 정책
 
