@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tableau Menu Bar POC</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <p class="eyebrow">Tableau Extension POC</p>
+      <h1>Accordion Navigator</h1>
+      <p class="summary">
+        현재 탭에서 Tableau 대시보드 URL 이동이 가능한지 검증한다.
+      </p>
+      <div id="status" class="status is-pending">Tableau Extensions API 초기화 대기 중</div>
+    </header>
+
+    <section class="accordion" aria-label="대시보드 메뉴">
+      <div class="group">
+        <button
+          id="production-toggle"
+          class="group-toggle"
+          type="button"
+          aria-expanded="true"
+          aria-controls="production-panel"
+        >
+          <span>생산</span>
+          <span id="production-icon" class="group-icon" aria-hidden="true">▾</span>
+        </button>
+
+        <div id="production-panel" class="group-panel">
+          <button
+            class="nav-link"
+            type="button"
+            data-label="생산 현황"
+            data-match="/sheet4"
+            data-url="https://prod-apnortheast-a.online.tableau.com/t/kisco/views/2/sheet4"
+          >
+            생산 현황
+          </button>
+
+          <button
+            class="nav-link"
+            type="button"
+            data-label="생산효율"
+            data-match="/sheet5"
+            data-url="https://prod-apnortheast-a.online.tableau.com/t/kisco/views/2/sheet5"
+          >
+            생산효율
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="notes" aria-label="검증 포인트">
+      <h2>검증 포인트</h2>
+      <ul>
+        <li>새 탭이나 새 창이 열리지 않아야 한다.</li>
+        <li>Extension iframe 내부만 바뀌지 않고 페이지 전체가 이동해야 한다.</li>
+        <li>Desktop과 Cloud에서 결과가 동일한지 확인한다.</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="https://extensions.tableauusercontent.com/resources/tableau.extensions.1.latest.min.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>

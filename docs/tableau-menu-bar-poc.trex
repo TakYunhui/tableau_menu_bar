@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.tableau.com/xml/extension_manifest"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.tableau.com/xml/extension_manifest extension_manifest.xsd"
+          manifest-version="0.1">
+
+  <dashboard-extension id="com.kisco.tableau-menu-bar-poc" extension-version="0.1.0">
+    <default-locale>ko_KR</default-locale>
+
+    <name>Tableau Menu Bar POC</name>
+    <description>POC for same-tab Tableau dashboard navigation.</description>
+
+    <author name="TakYunhui"
+            email="gwalgwal98@naver.com"
+            website="https://takyunhui.github.io/tableau_menu_bar/" />
+
+    <min-api-version>1.7</min-api-version>
+
+    <source-location>
+      <url>https://takyunhui.github.io/tableau_menu_bar/</url>
+    </source-location>
+
+    <icon>iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMBAp+X2ZsAAAAASUVORK5CYII=</icon>
+  </dashboard-extension>
+</manifest>
