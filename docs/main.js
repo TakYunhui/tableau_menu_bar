@@ -164,7 +164,7 @@ function createGroup(item) {
   panel.className = "group-panel";
   panel.hidden = !isOpen;
 
-  item.children.forEach((child) => {
+  (item.children || []).forEach((child) => {
     panel.appendChild(createChildItem(child));
   });
 
