@@ -55,7 +55,7 @@ button {
 }
 
 .menu-group {
-  border-radius: 18px;
+  border-radius: 0;
   background: transparent;
   overflow: hidden;
 }
@@ -76,7 +76,7 @@ button {
   color: var(--text-strong);
   text-align: left;
   cursor: pointer;
-  border-radius: 18px;
+  border-radius: 0;
 }
 
 .menu-toggle:hover {
@@ -152,7 +152,6 @@ button {
   gap: 2px;
   padding: 0;
   background: var(--subpanel-bg);
-  border-radius: 0;
 }
 
 .group-panel[hidden] {
