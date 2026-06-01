@@ -44,44 +44,11 @@ button {
   padding: 20px 16px;
 }
 
-.brand-card,
-.sidebar-card,
-.guide-card {
+.sidebar-card {
   border: 1px solid var(--border);
   border-radius: 24px;
   background: linear-gradient(180deg, var(--shell-top) 0%, var(--shell-bottom) 100%);
   box-shadow: var(--shadow);
-}
-
-.brand-card {
-  position: relative;
-  overflow: hidden;
-  padding: 18px;
-}
-
-.brand-card::after {
-  content: "";
-  position: absolute;
-  top: -32px;
-  right: -18px;
-  width: 108px;
-  height: 108px;
-  border-radius: 999px;
-  background: radial-gradient(circle, rgba(72, 217, 208, 0.3) 0%, rgba(72, 217, 208, 0) 70%);
-}
-
-.brand-mark {
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-  background:
-    linear-gradient(135deg, rgba(72, 217, 208, 0.95), rgba(136, 239, 232, 0.42)),
-    var(--panel-strong);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-}
-
-.brand-copy {
-  margin-top: 14px;
 }
 
 .eyebrow,
@@ -94,31 +61,16 @@ button {
   text-transform: uppercase;
 }
 
-.brand-card h1,
-.section-head h2,
-.guide-card h2 {
+.section-head h2 {
   margin: 0;
 }
 
-.brand-card h1 {
-  margin-top: 8px;
-  font-size: 24px;
-  line-height: 1.1;
-}
-
-.summary {
-  margin: 10px 0 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.55;
-}
-
 .status {
-  margin-top: 14px;
-  padding: 11px 12px;
-  border-radius: 14px;
-  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 11px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .status.is-pending,
@@ -133,11 +85,13 @@ button {
 }
 
 .sidebar-card {
-  margin-top: 16px;
   padding: 18px 14px 14px;
 }
 
 .section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 12px;
 }
 
@@ -183,19 +137,12 @@ button {
 }
 
 .menu-copy {
-  display: grid;
-  gap: 4px;
+  display: block;
 }
 
 .menu-title {
   font-size: 15px;
   font-weight: 700;
-}
-
-.menu-subtitle {
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.4;
 }
 
 .menu-arrow {
@@ -246,18 +193,12 @@ button {
 }
 
 .child-copy {
-  display: grid;
-  gap: 3px;
+  display: block;
 }
 
 .child-label {
   font-size: 13px;
   font-weight: 600;
-}
-
-.child-note {
-  color: var(--muted);
-  font-size: 11px;
 }
 
 .chip {
@@ -282,21 +223,4 @@ button {
 .chip-planned {
   background: rgba(255, 213, 128, 0.16);
   color: #ffe0a4;
-}
-
-.guide-card {
-  margin-top: 16px;
-  padding: 18px;
-}
-
-.guide-card h2 {
-  font-size: 18px;
-}
-
-.guide-card ul {
-  margin: 12px 0 0;
-  padding-left: 18px;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.6;
 }

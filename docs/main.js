@@ -98,13 +98,6 @@ function createChildItem(child) {
   label.textContent = child.label;
   textWrap.appendChild(label);
 
-  if (child.note) {
-    const note = document.createElement("span");
-    note.className = "child-note";
-    note.textContent = child.note;
-    textWrap.appendChild(note);
-  }
-
   row.appendChild(textWrap);
   row.appendChild(createBadge(child.kind));
   return row;
@@ -129,11 +122,6 @@ function createGroup(item) {
     title.className = "menu-title";
     title.textContent = item.label;
     copy.appendChild(title);
-
-    const subtitle = document.createElement("span");
-    subtitle.className = "menu-subtitle";
-    subtitle.textContent = `${item.entry.label}로 진입`;
-    copy.appendChild(subtitle);
 
     button.appendChild(copy);
 
@@ -162,11 +150,6 @@ function createGroup(item) {
   title.className = "menu-title";
   title.textContent = item.label;
   copy.appendChild(title);
-
-  const subtitle = document.createElement("span");
-  subtitle.className = "menu-subtitle";
-  subtitle.textContent = item.description;
-  copy.appendChild(subtitle);
 
   toggle.appendChild(copy);
 
@@ -199,15 +182,15 @@ function renderMenu() {
 
 async function initializeTableauExtension() {
   if (!window.tableau || !window.tableau.extensions) {
-    setStatus("GitHub Pages 미리보기 상태", "is-warning");
+    setStatus("미리보기", "is-warning");
     return;
   }
 
   try {
     await window.tableau.extensions.initializeAsync();
-    setStatus("Tableau Extension 연결 완료", "is-ready");
+    setStatus("연결됨", "is-ready");
   } catch (error) {
-    const message = error && error.message ? error.message : "Tableau 밖 미리보기 또는 초기화 제한";
+    const message = error && error.message ? error.message : "초기화 제한";
     setStatus(message, "is-warning");
   }
 }
