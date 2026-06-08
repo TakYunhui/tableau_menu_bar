@@ -2,12 +2,12 @@
 
 Tableau Dashboard Extension 기반 좌측 Navigator POC 저장소.
 
-현재 구현은 `카테고리(1Depth)`를 펼치고, 하위 `메인 / 세부(2Depth)` 항목을 선택하는 아코디언 메뉴 형태다.
+현재 구현은 `카테고리(1Depth)`를 펼치고, 하위 `메인 / 상세(2Depth)` 항목을 선택하는 아코디언 메뉴 형태다.
 
 ## 현재 방향
 
 - 같은 게시글 내부의 실제 화면 전환은 Tableau 쪽 구조와 병행한다.
-- 좌측 Navigator는 카테고리 진입과 향후 세부 진입 구조를 보여주는 공통 메뉴 역할로 둔다.
+- 좌측 Navigator는 카테고리 진입과 향후 상세 진입 구조를 보여주는 공통 메뉴 역할로 둔다.
 - 현재 URL이 연결된 것은 각 카테고리의 `메인` 항목이다.
 
 ## 메뉴 구조
@@ -16,16 +16,17 @@ Tableau Dashboard Extension 기반 좌측 Navigator POC 저장소.
   - 종합 메인
 - 손익·재무·인사
   - 손익재무인사 메인
-  - 손익재무인사 세부
+  - 손익 상세
+  - 재무 상세
+  - 인사 상세
 - 생산
   - 생산 메인
-  - 생산 세부
 - 영업
   - 영업 메인
-  - 영업 세부
+  - 영업 상세
 - 구매
   - 구매 메인
-  - 구매 세부
+  - 구매 상세
 
 ## 연결된 URL
 
@@ -38,7 +39,7 @@ Tableau Dashboard Extension 기반 좌측 Navigator POC 저장소.
 - 구매 메인
   - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/RE/sheet0`
 
-`종합 메인`, 각 카테고리의 `세부` 항목은 아직 URL이 없다.
+`종합 메인`, 각 카테고리의 `상세` 항목은 아직 URL이 없다.
 
 ## 동작 규칙
 
