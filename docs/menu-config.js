@@ -24,7 +24,15 @@ window.TABLEAU_MENU_CONFIG = [
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17785666538950/sheet0",
       },
       {
-        label: "손익재무인사 세부",
+        label: "손익 상세",
+        kind: "planned",
+      },
+      {
+        label: "재무 상세",
+        kind: "planned",
+      },
+      {
+        label: "인사 상세",
         kind: "planned",
       },
     ],
