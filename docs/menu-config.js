@@ -41,10 +41,6 @@ window.TABLEAU_MENU_CONFIG = [
         kind: "entry",
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/2/sheet4",
       },
-      {
-        label: "생산 세부",
-        kind: "planned",
-      },
     ],
     activeMatchers: ["/views/2/"],
   },
