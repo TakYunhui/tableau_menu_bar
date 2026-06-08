@@ -64,7 +64,7 @@ window.TABLEAU_MENU_CONFIG = [
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17790851223830/sheet1_1",
       },
       {
-        label: "영업 세부",
+        label: "영업 상세",
         kind: "planned",
       },
     ],
@@ -82,7 +82,7 @@ window.TABLEAU_MENU_CONFIG = [
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/RE/sheet0",
       },
       {
-        label: "구매 세부",
+        label: "구매 상세",
         kind: "planned",
       },
     ],
