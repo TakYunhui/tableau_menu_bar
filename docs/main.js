@@ -70,8 +70,8 @@ function createIcon(iconKey) {
   stroke.setAttribute("stroke-width", "1.8");
 
   const iconPaths = {
-    overview: "M4 6h16M4 12h10M4 18h13",
-    finance: "M5 17V9m5 8V5m5 12v-6m5 6V7",
+    overview: "M7 4h7l4 4v12H7zM14 4v4h4M9 12h6M9 16h6",
+    finance: "M12 7.5a2.25 2.25 0 1 0 0-4.5a2.25 2.25 0 0 0 0 4.5M6.5 19.5v-1.2A3.8 3.8 0 0 1 10.3 14.5h3.4a3.8 3.8 0 0 1 3.8 3.8v1.2",
     production: "M5 18V9l7-4 7 4v9M9 18v-4h6v4",
     sales: "M5 17l4-4 3 3 6-7",
     purchase: "M4 6h2l2.4 8.2a1 1 0 0 0 1 .8H18a1 1 0 0 0 1-.8L21 9H8",

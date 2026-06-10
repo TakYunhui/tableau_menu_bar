@@ -1,8 +1,8 @@
 window.TABLEAU_MENU_CONFIG = [
   {
     id: "overview",
-    label: "종합",
-    displayLabel: "종합",
+    label: "속보",
+    displayLabel: "속보",
     icon: "overview",
     children: [
       {
