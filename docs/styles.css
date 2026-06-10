@@ -69,8 +69,8 @@ button {
   width: 100%;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 18px;
-  min-height: 72px;
+  padding: 18px 18px;
+  min-height: 82px;
   border: 0;
   background: transparent;
   color: var(--text-strong);
@@ -98,23 +98,23 @@ button {
 .menu-heading {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   min-width: 0;
 }
 
 .menu-icon {
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   flex: none;
   color: var(--icon);
 }
 
 .menu-title {
   color: inherit;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1.2;
+  line-height: 1.25;
   white-space: nowrap;
   word-break: normal;
 }
