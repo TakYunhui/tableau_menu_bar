@@ -2,7 +2,7 @@
 
 Tableau Dashboard Extension 기반 좌측 Navigator POC 저장소.
 
-현재 구현은 `카테고리(1Depth)`를 펼치고, 하위 `메인 / 상세(2Depth)` 항목을 선택하는 아코디언 메뉴 형태다.
+현재 구현은 `카테고리(1Depth)`를 펼치고, 하위 `메인 / 상세(2Depth)` 항목을 선택하는 single-open 아코디언 메뉴 형태다.
 
 ## 현재 방향
 
@@ -39,7 +39,7 @@ Tableau Dashboard Extension 기반 좌측 Navigator POC 저장소.
 - 구매 메인
   - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/RE/sheet0`
 
-`종합 메인`, 각 카테고리의 `상세` 항목은 아직 URL이 없다.
+`종합 메인`과 각 카테고리의 `상세` 항목은 아직 URL이 없다.
 
 ## 동작 규칙
 
@@ -56,7 +56,7 @@ Tableau Dashboard Extension 기반 좌측 Navigator POC 저장소.
 - `Pretendard` 폰트 사용
 - 밝은 하늘색 계열 배경
 - 펼쳐진 1Depth는 파란 선택 블록
-- 2Depth는 직선형 블록 패널
+- 2Depth는 블루그레이 계열 직선형 패널
 - 각 1Depth 좌측에 아이콘 배치
 
 ## 폴더 구조
