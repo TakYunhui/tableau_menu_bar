@@ -28,10 +28,6 @@ window.TABLEAU_MENU_CONFIG = [
         kind: "planned",
       },
       {
-        label: "재무 상세",
-        kind: "planned",
-      },
-      {
         label: "인사 상세",
         kind: "planned",
       },
