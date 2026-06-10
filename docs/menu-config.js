@@ -6,7 +6,7 @@ window.TABLEAU_MENU_CONFIG = [
     icon: "overview",
     children: [
       {
-        label: "종합 메인",
+        label: "속보 메인",
         kind: "planned",
       },
     ],
