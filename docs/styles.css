@@ -21,6 +21,7 @@
   --current-group-bg: #e6efff;
   --current-group-border: #5b84f5;
   --current-group-text: #3f73f0;
+  --hover-accent: #ffd44d;
 }
 
 * {
@@ -205,6 +206,7 @@ button {
 
 .child-row:hover {
   background: var(--subpanel-row-hover);
+  border-left-color: var(--hover-accent);
 }
 
 .menu-group.is-open .group-panel,
@@ -245,6 +247,10 @@ button {
 
 .child-row.is-current .child-label {
   color: #f4fbff;
+}
+
+.child-row.is-current:hover {
+  border-left-color: var(--hover-accent);
 }
 
 .group-panel .child-row:last-child {
