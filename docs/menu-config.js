@@ -21,7 +21,7 @@ window.TABLEAU_MENU_CONFIG = [
       {
         label: "손익재무인사 메인",
         kind: "entry",
-        url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17785666538950/sheet0",
+        url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_V2_17811391757600/1_",
       },
       {
         label: "손익 상세",
@@ -33,7 +33,7 @@ window.TABLEAU_MENU_CONFIG = [
         kind: "planned",
       },
     ],
-    activeMatchers: ["/views/_17785666538950/"],
+    activeMatchers: ["/views/_V2_17811391757600/"],
   },
   {
     id: "production",
