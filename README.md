@@ -12,12 +12,11 @@ Tableau Dashboard Extension 기반 좌측 Navigator POC 저장소.
 
 ## 메뉴 구조
 
-- 종합
-  - 종합 메인
+- 속보
+  - 속보 메인
 - 손익·재무·인사
   - 손익재무인사 메인
   - 손익 상세
-  - 재무 상세
   - 인사 상세
 - 생산
   - 생산 메인
@@ -39,7 +38,7 @@ Tableau Dashboard Extension 기반 좌측 Navigator POC 저장소.
 - 구매 메인
   - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/RE/sheet0`
 
-`종합 메인`과 각 카테고리의 `상세` 항목은 아직 URL이 없다.
+`속보 메인`과 각 카테고리의 `상세` 항목은 아직 URL이 없다.
 
 ## 동작 규칙
 
@@ -57,7 +56,7 @@ Tableau Dashboard Extension 기반 좌측 Navigator POC 저장소.
 - 밝은 하늘색 계열 배경
 - 펼쳐진 1Depth는 파란 선택 블록
 - 2Depth는 블루그레이 계열 직선형 패널
-- 각 1Depth 좌측에 아이콘 배치
+- 각 1Depth 좌측에 카테고리별 아이콘 배치
 
 ## 폴더 구조
 
