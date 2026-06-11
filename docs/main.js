@@ -5,6 +5,7 @@ const state = {
 };
 
 const menuRootEl = document.getElementById("menu-root");
+const debugOutputEl = document.getElementById("debug-output");
 const mockCurrentUrl = new URLSearchParams(window.location.search).get("mockCurrentUrl");
 
 function normalizeUrl(rawUrl) {
@@ -17,20 +18,36 @@ function normalizeUrl(rawUrl) {
   return withoutQuery.replace(/\/+$/, "");
 }
 
-function getCurrentUrl() {
+function getCurrentUrlInfo() {
   if (mockCurrentUrl) {
-    return mockCurrentUrl;
+    return {
+      url: mockCurrentUrl,
+      source: "mockCurrentUrl",
+    };
   }
 
   try {
     if (window.top && window.top.location && window.top.location.href) {
-      return window.top.location.href;
+      return {
+        url: window.top.location.href,
+        source: "window.top.location.href",
+      };
     }
   } catch (error) {
-    // Reading top-frame location can fail in embedded preview contexts.
+    return {
+      url: window.location.href,
+      source: `window.location.href (top blocked: ${error.name || "error"})`,
+    };
   }
 
-  return window.location.href;
+  return {
+    url: window.location.href,
+    source: "window.location.href",
+  };
+}
+
+function getCurrentUrl() {
+  return getCurrentUrlInfo().url;
 }
 
 function isUrlMatch(targetUrl, currentUrl) {
@@ -72,6 +89,22 @@ function getCurrentMatch() {
     itemId: null,
     childLabel: null,
   };
+}
+
+function updateDebugPanel(currentMatch) {
+  if (!debugOutputEl) {
+    return;
+  }
+
+  const currentUrlInfo = getCurrentUrlInfo();
+
+  debugOutputEl.textContent = [
+    `source: ${currentUrlInfo.source}`,
+    `url: ${currentUrlInfo.url}`,
+    `matched item: ${currentMatch.itemId || "none"}`,
+    `matched child: ${currentMatch.childLabel || "none"}`,
+    `open item: ${state.openItemId || "none"}`,
+  ].join("\n");
 }
 
 function moveSameTab(targetUrl, label) {
@@ -209,8 +242,10 @@ function createGroup(item) {
 }
 
 function renderMenu() {
+  const currentMatch = getCurrentMatch();
+
   if (state.openItemId === null) {
-    state.openItemId = getCurrentMatch().itemId;
+    state.openItemId = currentMatch.itemId;
   }
 
   menuRootEl.innerHTML = "";
@@ -218,6 +253,8 @@ function renderMenu() {
   MENU_CONFIG.forEach((item) => {
     menuRootEl.appendChild(createGroup(item));
   });
+
+  updateDebugPanel(currentMatch);
 }
 
 async function initializeTableauExtension() {
