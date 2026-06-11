@@ -16,11 +16,11 @@
   --subpanel-row-hover: rgba(255, 255, 255, 0.12);
   --subpanel-text: #f7fbff;
   --subpanel-muted: #d7e4f2;
-  --current-accent: #ffd44d;
-  --current-accent-soft: rgba(255, 212, 77, 0.18);
-  --current-group-bg: #fff2b8;
-  --current-group-border: #f2c43d;
-  --current-group-text: #7f5f00;
+  --current-accent: #6ec4ff;
+  --current-accent-soft: rgba(110, 196, 255, 0.16);
+  --current-group-bg: #e6efff;
+  --current-group-border: #5b84f5;
+  --current-group-text: #3f73f0;
 }
 
 * {
@@ -137,6 +137,10 @@ button {
   color: var(--current-group-border);
 }
 
+.menu-group.is-active:not(.is-open) > .menu-toggle .menu-icon path {
+  stroke-width: 2.6;
+}
+
 .menu-arrow {
   display: flex;
   align-items: center;
@@ -236,11 +240,11 @@ button {
 .child-row.is-current {
   background: var(--current-accent-soft);
   border-left-color: var(--current-accent);
-  color: #fff6d6;
+  color: #f4fbff;
 }
 
 .child-row.is-current .child-label {
-  color: #fff6d6;
+  color: #f4fbff;
 }
 
 .group-panel .child-row:last-child {
