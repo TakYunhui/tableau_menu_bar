@@ -25,7 +25,8 @@ window.TABLEAU_MENU_CONFIG = [
       },
       {
         label: "손익 상세",
-        kind: "planned",
+        kind: "entry",
+        url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17809066476870/1/da8a7653-4813-4351-9ce8-d365a5e484b4/ecdf54bb-49db-43b5-882c-32ca3f88b4ff",
       },
       {
         label: "인사 상세",
@@ -43,10 +44,10 @@ window.TABLEAU_MENU_CONFIG = [
       {
         label: "생산 메인",
         kind: "entry",
-        url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/2/sheet4",
+        url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/__17809950247560/1_",
       },
     ],
-    activeMatchers: ["/views/2/"],
+    activeMatchers: ["/views/__17809950247560/"],
   },
   {
     id: "sales",
@@ -57,14 +58,14 @@ window.TABLEAU_MENU_CONFIG = [
       {
         label: "영업 메인",
         kind: "entry",
-        url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17790851223830/sheet1_1",
+        url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/2_17805514108510/1_",
       },
       {
         label: "영업 상세",
         kind: "planned",
       },
     ],
-    activeMatchers: ["/views/_17790851223830/"],
+    activeMatchers: ["/views/2_17805514108510/"],
   },
   {
     id: "purchase",
@@ -79,7 +80,8 @@ window.TABLEAU_MENU_CONFIG = [
       },
       {
         label: "구매 상세",
-        kind: "planned",
+        kind: "entry",
+        url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17809733918700/sheet0/ac2a811d-b18c-4c81-b317-e2e3ce9bce6f/b6941347-9ea9-469c-964d-c62007b7230a",
       },
     ],
     activeMatchers: ["/views/RE/"],
