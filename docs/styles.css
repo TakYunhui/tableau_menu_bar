@@ -88,17 +88,16 @@ button {
   background: rgba(63, 118, 246, 0.06);
 }
 
+.menu-group.is-open > .menu-toggle {
+  color: #ffffff;
+  background: linear-gradient(180deg, #4d7ef1 0%, #3f73f0 100%);
+  box-shadow: var(--shadow);
+}
+
 .menu-group.is-active:not(.is-open) > .menu-toggle {
   color: var(--current-group-text);
   background: var(--current-group-bg);
   box-shadow: inset 4px 0 0 var(--current-group-border);
-}
-
-.menu-group.is-open > .menu-toggle,
-.menu-group.is-active > .menu-toggle {
-  color: #ffffff;
-  background: linear-gradient(180deg, #4d7ef1 0%, #3f73f0 100%);
-  box-shadow: var(--shadow);
 }
 
 .menu-copy {
@@ -130,8 +129,7 @@ button {
   word-break: normal;
 }
 
-.menu-group.is-open > .menu-toggle .menu-icon,
-.menu-group.is-active > .menu-toggle .menu-icon {
+.menu-group.is-open > .menu-toggle .menu-icon {
   color: var(--icon-active);
 }
 
@@ -153,8 +151,7 @@ button {
   transition: transform 140ms ease, color 140ms ease;
 }
 
-.menu-group.is-open > .menu-toggle .menu-arrow,
-.menu-group.is-active > .menu-toggle .menu-arrow {
+.menu-group.is-open > .menu-toggle .menu-arrow {
   color: #dfe8ff;
 }
 
