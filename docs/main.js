@@ -1,12 +1,27 @@
 const MENU_CONFIG = window.TABLEAU_MENU_CONFIG || [];
 
 const state = {
-  openIds: new Set(),
+  openItemId: null,
 };
 
 const menuRootEl = document.getElementById("menu-root");
+const mockCurrentUrl = new URLSearchParams(window.location.search).get("mockCurrentUrl");
+
+function normalizeUrl(rawUrl) {
+  if (!rawUrl) {
+    return "";
+  }
+
+  const [withoutHash] = rawUrl.split("#");
+  const [withoutQuery] = withoutHash.split("?");
+  return withoutQuery.replace(/\/+$/, "");
+}
 
 function getCurrentUrl() {
+  if (mockCurrentUrl) {
+    return mockCurrentUrl;
+  }
+
   try {
     if (window.top && window.top.location && window.top.location.href) {
       return window.top.location.href;
@@ -18,16 +33,45 @@ function getCurrentUrl() {
   return window.location.href;
 }
 
-function isItemActive(item) {
-  const currentUrl = getCurrentUrl();
-  const activeMatchers = item.activeMatchers || [];
+function isUrlMatch(targetUrl, currentUrl) {
+  const normalizedTarget = normalizeUrl(targetUrl);
+  const normalizedCurrent = normalizeUrl(currentUrl);
 
-  if (activeMatchers.some((matcher) => currentUrl.includes(matcher))) {
-    return true;
+  if (!normalizedTarget || !normalizedCurrent) {
+    return false;
   }
 
-  const children = item.children || [];
-  return children.some((child) => Boolean(child.url && currentUrl.includes(child.url)));
+  return normalizedCurrent === normalizedTarget || normalizedCurrent.startsWith(`${normalizedTarget}/`);
+}
+
+function getCurrentMatch() {
+  const currentUrl = getCurrentUrl();
+
+  for (const item of MENU_CONFIG) {
+    const children = item.children || [];
+
+    for (const child of children) {
+      if (child.url && isUrlMatch(child.url, currentUrl)) {
+        return {
+          itemId: item.id,
+          childLabel: child.label,
+        };
+      }
+    }
+
+    const activeMatchers = item.activeMatchers || [];
+    if (activeMatchers.some((matcher) => currentUrl.includes(matcher))) {
+      return {
+        itemId: item.id,
+        childLabel: null,
+      };
+    }
+  }
+
+  return {
+    itemId: null,
+    childLabel: null,
+  };
 }
 
 function moveSameTab(targetUrl, label) {
@@ -46,11 +90,10 @@ function moveSameTab(targetUrl, label) {
 }
 
 function toggleGroup(itemId) {
-  if (state.openIds.has(itemId)) {
-    state.openIds.delete(itemId);
+  if (state.openItemId === itemId) {
+    state.openItemId = null;
   } else {
-    state.openIds.clear();
-    state.openIds.add(itemId);
+    state.openItemId = itemId;
   }
 
   renderMenu();
@@ -82,16 +125,13 @@ function createIcon(iconKey) {
   return svg;
 }
 
-function createChildItem(child) {
-  const row = document.createElement(child.url ? "button" : "div");
-  row.className = `child-row kind-${child.kind}${child.url ? " is-link" : ""}`;
-
-  if (child.url) {
-    row.type = "button";
-    row.addEventListener("click", () => {
-      moveSameTab(child.url, child.label);
-    });
-  }
+function createChildItem(child, isCurrent) {
+  const row = document.createElement("button");
+  row.type = "button";
+  row.className = `child-row${isCurrent ? " is-current" : ""}`;
+  row.addEventListener("click", () => {
+    moveSameTab(child.url, child.label);
+  });
 
   const textWrap = document.createElement("div");
   textWrap.className = "child-copy";
@@ -101,14 +141,23 @@ function createChildItem(child) {
   label.textContent = child.label;
   textWrap.appendChild(label);
 
+  if (isCurrent) {
+    const meta = document.createElement("span");
+    meta.className = "child-meta";
+    meta.textContent = "현재";
+    textWrap.appendChild(meta);
+  }
+
   row.appendChild(textWrap);
   return row;
 }
 
 function createGroup(item) {
+  const currentMatch = getCurrentMatch();
   const group = document.createElement("article");
-  const isOpen = state.openIds.has(item.id);
-  group.className = `menu-group${isItemActive(item) ? " is-active" : ""}${isOpen ? " is-open" : ""}`;
+  const isOpen = state.openItemId === item.id;
+  const isCurrentGroup = currentMatch.itemId === item.id;
+  group.className = `menu-group${isCurrentGroup ? " is-active" : ""}${isOpen ? " is-open" : ""}`;
 
   const toggle = document.createElement("button");
   toggle.type = "button";
@@ -131,6 +180,13 @@ function createGroup(item) {
   heading.appendChild(title);
   copy.appendChild(heading);
 
+  if (isCurrentGroup && !isOpen) {
+    const status = document.createElement("span");
+    status.className = "menu-current-badge";
+    status.textContent = "현재";
+    copy.appendChild(status);
+  }
+
   toggle.appendChild(copy);
 
   const arrow = document.createElement("span");
@@ -145,7 +201,7 @@ function createGroup(item) {
   panel.hidden = !isOpen;
 
   (item.children || []).forEach((child) => {
-    panel.appendChild(createChildItem(child));
+    panel.appendChild(createChildItem(child, isCurrentGroup && currentMatch.childLabel === child.label));
   });
 
   group.appendChild(panel);
@@ -153,6 +209,10 @@ function createGroup(item) {
 }
 
 function renderMenu() {
+  if (state.openItemId === null) {
+    state.openItemId = getCurrentMatch().itemId;
+  }
+
   menuRootEl.innerHTML = "";
 
   MENU_CONFIG.forEach((item) => {

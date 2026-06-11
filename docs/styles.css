@@ -16,6 +16,11 @@
   --subpanel-row-hover: rgba(255, 255, 255, 0.12);
   --subpanel-text: #f7fbff;
   --subpanel-muted: #d7e4f2;
+  --current-accent: #ffd44d;
+  --current-accent-soft: rgba(255, 212, 77, 0.18);
+  --current-group-bg: #fff2b8;
+  --current-group-border: #f2c43d;
+  --current-group-text: #7f5f00;
 }
 
 * {
@@ -83,6 +88,12 @@ button {
   background: rgba(63, 118, 246, 0.06);
 }
 
+.menu-group.is-active:not(.is-open) > .menu-toggle {
+  color: var(--current-group-text);
+  background: var(--current-group-bg);
+  box-shadow: inset 4px 0 0 var(--current-group-border);
+}
+
 .menu-group.is-open > .menu-toggle,
 .menu-group.is-active > .menu-toggle {
   color: #ffffff;
@@ -124,6 +135,10 @@ button {
   color: var(--icon-active);
 }
 
+.menu-group.is-active:not(.is-open) > .menu-toggle .menu-icon {
+  color: var(--current-group-border);
+}
+
 .menu-arrow {
   display: flex;
   align-items: center;
@@ -143,8 +158,21 @@ button {
   color: #dfe8ff;
 }
 
+.menu-group.is-active:not(.is-open) > .menu-toggle .menu-arrow {
+  color: var(--current-group-text);
+}
+
 .menu-arrow.is-open {
   transform: rotate(90deg);
+}
+
+.menu-current-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 6px;
+  color: var(--current-group-text);
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .group-panel {
@@ -170,11 +198,11 @@ button {
   text-align: left;
 }
 
-.child-row.is-link {
+.child-row {
   cursor: pointer;
 }
 
-.child-row.is-link:hover {
+.child-row:hover {
   background: var(--subpanel-row-hover);
 }
 
@@ -195,13 +223,27 @@ button {
   word-break: keep-all;
 }
 
-.kind-entry {
-  border-left-color: #59b6ff;
+.child-meta {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 4px;
+  color: var(--current-accent);
+  font-size: 11px;
+  font-weight: 700;
 }
 
-.kind-planned {
+.child-row {
   border-left-color: rgba(255, 255, 255, 0.18);
-  color: var(--subpanel-muted);
+}
+
+.child-row.is-current {
+  background: var(--current-accent-soft);
+  border-left-color: var(--current-accent);
+  color: #fff6d6;
+}
+
+.child-row.is-current .child-label {
+  color: #fff6d6;
 }
 
 .group-panel .child-row:last-child {
