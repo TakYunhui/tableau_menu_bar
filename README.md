@@ -15,7 +15,6 @@ Tableau Dashboard Extension 기반 메뉴바 POC 저장소.
   - 생산 메인
 - 구매
   - 구매 메인
-  - 구매 상세
 - 손익재무인사
   - 손익재무인사 메인
   - 손익 상세
@@ -28,28 +27,28 @@ Tableau Dashboard Extension 기반 메뉴바 POC 저장소.
 - 영업 메인
   - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/2_17805514108510/1_`
 - 생산 메인
-  - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/__17809950247560/1_`
+  - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/__17809950247560/1__1`
 - 구매 메인
   - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/4_/1_`
-- 구매 상세
-  - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17809733918700/sheet0/ac2a811d-b18c-4c81-b317-e2e3ce9bce6f/b6941347-9ea9-469c-964d-c62007b7230a`
 - 손익재무인사 메인
   - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_V2_17811391757600/1_`
 - 손익 상세
-  - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17809066476870/1/da8a7653-4813-4351-9ce8-d365a5e484b4/ecdf54bb-49db-43b5-882c-32ca3f88b4ff`
+  - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17809066476870/1_`
 
 ## 설정된 dashboard name
 
 - 속보
   - `1. 속보`
 - 영업 메인
-  - `1. 영업 메인`
+  - `1. 영업 현황`
 - 생산 메인
   - `1. 생산 현황`
 - 구매 메인
   - `1. 구매 현황`
 - 손익재무인사 메인
   - `1. 손익재무요약`
+- 손익 상세
+  - `1. 손익 상세: 제조원가`
 
 ## 동작 방식
 

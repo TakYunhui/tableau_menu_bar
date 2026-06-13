@@ -22,7 +22,7 @@ window.TABLEAU_MENU_CONFIG = [
     children: [
       {
         label: "영업 메인",
-        dashboardName: "1. 영업 메인",
+        dashboardName: "1. 영업 현황",
         kind: "entry",
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/2_17805514108510/1_",
       },
@@ -43,7 +43,7 @@ window.TABLEAU_MENU_CONFIG = [
         label: "생산 메인",
         dashboardName: "1. 생산 현황",
         kind: "entry",
-        url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/__17809950247560/1_",
+        url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/__17809950247560/1__1",
       },
     ],
     activeMatchers: ["/views/__17809950247560/"],
@@ -59,11 +59,6 @@ window.TABLEAU_MENU_CONFIG = [
         dashboardName: "1. 구매 현황",
         kind: "entry",
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/4_/1_",
-      },
-      {
-        label: "구매 상세",
-        kind: "entry",
-        url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17809733918700/sheet0/ac2a811d-b18c-4c81-b317-e2e3ce9bce6f/b6941347-9ea9-469c-964d-c62007b7230a",
       },
     ],
     activeMatchers: ["/views/4_/"],
@@ -82,8 +77,9 @@ window.TABLEAU_MENU_CONFIG = [
       },
       {
         label: "손익 상세",
+        dashboardName: "1. 손익 상세: 제조원가",
         kind: "entry",
-        url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17809066476870/1/da8a7653-4813-4351-9ce8-d365a5e484b4/ecdf54bb-49db-43b5-882c-32ca3f88b4ff",
+        url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17809066476870/1_",
       },
       {
         label: "인사 상세",
