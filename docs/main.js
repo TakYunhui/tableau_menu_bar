@@ -2,10 +2,12 @@ const MENU_CONFIG = window.TABLEAU_MENU_CONFIG || [];
 
 const state = {
   openItemId: null,
+  currentDashboardName: "",
 };
 
 const menuRootEl = document.getElementById("menu-root");
 const mockCurrentUrl = new URLSearchParams(window.location.search).get("mockCurrentUrl");
+const mockDashboardName = new URLSearchParams(window.location.search).get("mockDashboardName");
 
 function normalizeUrl(rawUrl) {
   if (!rawUrl) {
@@ -33,6 +35,18 @@ function getCurrentUrl() {
   return window.location.href;
 }
 
+function normalizeDashboardName(rawName) {
+  return String(rawName || "").trim().replace(/\s+/g, " ");
+}
+
+function getCurrentDashboardName() {
+  if (mockDashboardName) {
+    return normalizeDashboardName(mockDashboardName);
+  }
+
+  return normalizeDashboardName(state.currentDashboardName);
+}
+
 function isUrlMatch(targetUrl, currentUrl) {
   const normalizedTarget = normalizeUrl(targetUrl);
   const normalizedCurrent = normalizeUrl(currentUrl);
@@ -45,12 +59,24 @@ function isUrlMatch(targetUrl, currentUrl) {
 }
 
 function getCurrentMatch() {
+  const currentDashboardName = getCurrentDashboardName();
   const currentUrl = getCurrentUrl();
 
   for (const item of MENU_CONFIG) {
     const children = item.children || [];
 
     for (const child of children) {
+      if (
+        child.dashboardName &&
+        currentDashboardName &&
+        normalizeDashboardName(child.dashboardName) === currentDashboardName
+      ) {
+        return {
+          itemId: item.id,
+          childLabel: child.label,
+        };
+      }
+
       if (child.url && isUrlMatch(child.url, currentUrl)) {
         return {
           itemId: item.id,
@@ -151,8 +177,7 @@ function createChildItem(child, isCurrent) {
   return row;
 }
 
-function createGroup(item) {
-  const currentMatch = getCurrentMatch();
+function createGroup(item, currentMatch) {
   const group = document.createElement("article");
   const isOpen = state.openItemId === item.id;
   const isCurrentGroup = currentMatch.itemId === item.id;
@@ -217,7 +242,7 @@ function renderMenu() {
   menuRootEl.innerHTML = "";
 
   MENU_CONFIG.forEach((item) => {
-    menuRootEl.appendChild(createGroup(item));
+    menuRootEl.appendChild(createGroup(item, currentMatch));
   });
 }
 
@@ -228,6 +253,9 @@ async function initializeTableauExtension() {
 
   try {
     await window.tableau.extensions.initializeAsync();
+    const dashboard = window.tableau.extensions.dashboardContent?.dashboard;
+    state.currentDashboardName = dashboard?.activeDashboardName || dashboard?.name || "";
+    renderMenu();
   } catch (error) {
     // Ignore preview-only initialization failures in the compact UI.
   }
