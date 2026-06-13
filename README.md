@@ -10,12 +10,16 @@ Tableau Dashboard Extension 기반 메뉴바 POC 저장소.
   - 속보
 - 영업
   - 영업 메인
+  - 영업 상세
 - 생산
-  - 생산 현황
+  - 생산 메인
 - 구매
-  - 구매 현황
+  - 구매 메인
+  - 구매 상세
 - 손익재무인사
   - 손익재무인사 메인
+  - 손익 상세
+  - 인사 상세
 
 ## 연결 URL
 
@@ -23,19 +27,36 @@ Tableau Dashboard Extension 기반 메뉴바 POC 저장소.
   - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17812256452380/1_`
 - 영업 메인
   - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/2_17805514108510/1_`
-- 생산 현황
+- 생산 메인
   - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/__17809950247560/1_`
-- 구매 현황
+- 구매 메인
   - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/4_/1_`
+- 구매 상세
+  - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17809733918700/sheet0/ac2a811d-b18c-4c81-b317-e2e3ce9bce6f/b6941347-9ea9-469c-964d-c62007b7230a`
 - 손익재무인사 메인
   - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_V2_17811391757600/1_`
+- 손익 상세
+  - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17809066476870/1/da8a7653-4813-4351-9ce8-d365a5e484b4/ecdf54bb-49db-43b5-882c-32ca3f88b4ff`
+
+## 설정된 dashboard name
+
+- 속보
+  - `1. 속보`
+- 영업 메인
+  - `1. 영업 메인`
+- 생산 메인
+  - `1. 생산 현황`
+- 구매 메인
+  - `1. 구매 현황`
+- 손익재무인사 메인
+  - `1. 손익재무요약`
 
 ## 동작 방식
 
 1. 메뉴는 `속보 > 영업 > 생산 > 구매 > 손익재무인사` 순서로 노출된다.
 2. 한 번에 하나의 1Depth만 펼쳐진다.
 3. 링크가 있는 2Depth를 누르면 현재 탭에서 해당 Tableau URL로 이동한다.
-4. 현재 조회 중인 대시보드는 Tableau Extensions API의 dashboard name으로 판단해 active 상태를 표시한다.
+4. `dashboardName`이 설정된 항목은 Tableau Extensions API의 dashboard name으로 active 상태를 표시한다.
 5. 로컬 미리보기처럼 Tableau 컨텍스트가 없는 경우에는 URL 비교 fallback이 동작한다.
 
 ## UI 기준
