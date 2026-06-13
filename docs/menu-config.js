@@ -7,7 +7,7 @@ window.TABLEAU_MENU_CONFIG = [
     children: [
       {
         label: "속보",
-        dashboardName: "1. 속보",
+        dashboardNames: ["1. 속보"],
         kind: "entry",
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17812256452380/1_",
       },
@@ -22,7 +22,7 @@ window.TABLEAU_MENU_CONFIG = [
     children: [
       {
         label: "영업 메인",
-        dashboardName: "1. 영업 현황",
+        dashboardNames: ["1. 영업 현황", "2. 민수 현황", "3. 관수 현황"],
         kind: "entry",
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/2_17805514108510/1_",
       },
@@ -41,7 +41,7 @@ window.TABLEAU_MENU_CONFIG = [
     children: [
       {
         label: "생산 메인",
-        dashboardName: "1. 생산 현황",
+        dashboardNames: ["1. 생산 현황", "2. 생산 효율"],
         kind: "entry",
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/__17809950247560/1__1",
       },
@@ -56,7 +56,7 @@ window.TABLEAU_MENU_CONFIG = [
     children: [
       {
         label: "구매 메인",
-        dashboardName: "1. 구매 현황",
+        dashboardNames: ["1. 구매 현황", "2. 입고 분석"],
         kind: "entry",
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/4_/1_",
       },
@@ -71,7 +71,7 @@ window.TABLEAU_MENU_CONFIG = [
     children: [
       {
         label: "손익재무인사 메인",
-        dashboardName: "1. 손익재무요약",
+        dashboardNames: ["1. 손익재무요약", "2. 재무현황", "3. 인사현황"],
         kind: "entry",
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_V2_17811391757600/1_",
       },

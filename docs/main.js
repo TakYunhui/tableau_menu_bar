@@ -47,6 +47,18 @@ function getCurrentDashboardName() {
   return normalizeDashboardName(state.currentDashboardName);
 }
 
+function getDashboardAliases(child) {
+  if (Array.isArray(child.dashboardNames)) {
+    return child.dashboardNames.map(normalizeDashboardName).filter(Boolean);
+  }
+
+  if (child.dashboardName) {
+    return [normalizeDashboardName(child.dashboardName)].filter(Boolean);
+  }
+
+  return [];
+}
+
 function isUrlMatch(targetUrl, currentUrl) {
   const normalizedTarget = normalizeUrl(targetUrl);
   const normalizedCurrent = normalizeUrl(currentUrl);
@@ -66,11 +78,9 @@ function getCurrentMatch() {
     const children = item.children || [];
 
     for (const child of children) {
-      if (
-        child.dashboardName &&
-        currentDashboardName &&
-        normalizeDashboardName(child.dashboardName) === currentDashboardName
-      ) {
+      const dashboardAliases = getDashboardAliases(child);
+
+      if (currentDashboardName && dashboardAliases.includes(currentDashboardName)) {
         return {
           itemId: item.id,
           childLabel: child.label,

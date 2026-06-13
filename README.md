@@ -35,18 +35,24 @@ Tableau Dashboard Extension 기반 메뉴바 POC 저장소.
 - 손익 상세
   - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17809066476870/1_`
 
-## 설정된 dashboard name
+## 설정된 dashboard name aliases
 
 - 속보
   - `1. 속보`
 - 영업 메인
   - `1. 영업 현황`
+  - `2. 민수 현황`
+  - `3. 관수 현황`
 - 생산 메인
   - `1. 생산 현황`
+  - `2. 생산 효율`
 - 구매 메인
   - `1. 구매 현황`
+  - `2. 입고 분석`
 - 손익재무인사 메인
   - `1. 손익재무요약`
+  - `2. 재무현황`
+  - `3. 인사현황`
 - 손익 상세
   - `1. 손익 상세: 제조원가`
 
@@ -55,7 +61,7 @@ Tableau Dashboard Extension 기반 메뉴바 POC 저장소.
 1. 메뉴는 `속보 > 영업 > 생산 > 구매 > 손익재무인사` 순서로 노출된다.
 2. 한 번에 하나의 1Depth만 펼쳐진다.
 3. 링크가 있는 2Depth를 누르면 현재 탭에서 해당 Tableau URL로 이동한다.
-4. `dashboardName`이 설정된 항목은 Tableau Extensions API의 dashboard name으로 active 상태를 표시한다.
+4. `dashboardNames` 또는 `dashboardName`이 설정된 항목은 Tableau Extensions API의 dashboard name과 비교해 active 상태를 표시한다.
 5. 로컬 미리보기처럼 Tableau 컨텍스트가 없는 경우에는 URL 비교 fallback이 동작한다.
 
 ## UI 기준
@@ -82,7 +88,7 @@ docs/
 ## 주요 파일
 
 - `docs/menu-config.js`
-  - 메뉴 순서, 표시 라벨, URL, dashboardName 설정
+  - 메뉴 순서, 표시 라벨, URL, dashboardNames 설정
 - `docs/main.js`
   - single-open accordion 렌더링, 현재 탭 이동, active 판별 로직
 - `docs/styles.css`
