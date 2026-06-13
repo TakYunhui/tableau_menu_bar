@@ -1,62 +1,50 @@
 # tableau_menu_bar
 
-Tableau Dashboard Extension 기반 좌측 Navigator POC 저장소.
+Tableau Dashboard Extension 기반 메뉴바 POC 저장소.
 
-현재 구현은 `카테고리(1Depth)`를 펼치고, 하위 `메인 / 상세(2Depth)` 항목을 선택하는 single-open 아코디언 메뉴 형태다.
+현재 구현은 `1Depth 카테고리 + 2Depth 대시보드 링크` 구조의 single-open accordion 메뉴다.
 
-## 현재 방향
-
-- 같은 게시글 내부의 실제 화면 전환은 Tableau 쪽 구조와 병행한다.
-- 좌측 Navigator는 카테고리 진입과 향후 상세 진입 구조를 보여주는 공통 메뉴 역할로 둔다.
-- 현재 URL이 연결된 것은 각 카테고리의 `메인` 항목이다.
-
-## 메뉴 구조
+## 현재 메뉴 구조
 
 - 속보
-  - 속보 메인
-- 손익·재무·인사
-  - 손익재무인사 메인
-  - 손익 상세
-  - 인사 상세
-- 생산
-  - 생산 메인
+  - 속보
 - 영업
   - 영업 메인
-  - 영업 상세
+- 생산
+  - 생산 현황
 - 구매
-  - 구매 메인
-  - 구매 상세
+  - 구매 현황
+- 손익재무인사
+  - 손익재무인사 메인
 
-## 연결된 URL
+## 연결 URL
 
-- 손익재무인사 메인
-  - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17785666538950/sheet0`
-- 생산 메인
-  - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/2/sheet4`
+- 속보
+  - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17812256452380/1_`
 - 영업 메인
-  - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17790851223830/sheet1_1`
-- 구매 메인
-  - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/RE/sheet0`
+  - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/2_17805514108510/1_`
+- 생산 현황
+  - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/__17809950247560/1_`
+- 구매 현황
+  - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/4_/1_`
+- 손익재무인사 메인
+  - `https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_V2_17811391757600/1_`
 
-`속보 메인`과 각 카테고리의 `상세` 항목은 아직 URL이 없다.
+## 동작 방식
 
-## 동작 규칙
+1. 메뉴는 `속보 > 영업 > 생산 > 구매 > 손익재무인사` 순서로 노출된다.
+2. 한 번에 하나의 1Depth만 펼쳐진다.
+3. 링크가 있는 2Depth를 누르면 현재 탭에서 해당 Tableau URL로 이동한다.
+4. 현재 조회 중인 대시보드는 Tableau Extensions API의 dashboard name으로 판단해 active 상태를 표시한다.
+5. 로컬 미리보기처럼 Tableau 컨텍스트가 없는 경우에는 URL 비교 fallback이 동작한다.
 
-1. 1Depth는 이동이 아니라 펼침/접힘 버튼이다.
-2. 한 번에 하나의 1Depth만 열린다.
-3. URL이 있는 2Depth만 실제 이동한다.
-4. URL이 없는 2Depth는 구조만 먼저 보여준다.
-5. 이동은 새 창이 아니라 현재 탭 URL 변경 방식이다.
+## UI 기준
 
-## UI 상태
-
-- 폭 `200px` 기준 사이드바
-- 세로는 `min-height: 100vh` 유지
+- `200px` 고정 폭 사이드바
+- `min-height: 100vh` 전체 높이 유지
 - `Pretendard` 폰트 사용
 - 밝은 하늘색 계열 배경
-- 펼쳐진 1Depth는 파란 선택 블록
-- 2Depth는 블루그레이 계열 직선형 패널
-- 각 1Depth 좌측에 카테고리별 아이콘 배치
+- 현재 카테고리와 현재 대시보드 active 상태 표시
 
 ## 폴더 구조
 
@@ -71,36 +59,33 @@ docs/
     README.md
 ```
 
-## 파일 설명
+## 주요 파일
 
-- `docs/index.html`
-  - Extension 진입 HTML
 - `docs/menu-config.js`
-  - 메뉴 트리와 URL 설정
+  - 메뉴 순서, 표시 라벨, URL, dashboardName 설정
 - `docs/main.js`
-  - 렌더링, single-open accordion, 이동 로직
+  - single-open accordion 렌더링, 현재 탭 이동, active 판별 로직
 - `docs/styles.css`
-  - 현재 사이드바 UI 스타일
+  - 메뉴바 UI 스타일
 - `docs/tableau-menu-bar-poc.trex`
   - Tableau Extension manifest 초안
 
-## 테스트 기준
+## 테스트 메모
 
 ### Desktop
 
 1. 정적 서버로 `docs/`를 띄운다.
-2. `tableau-menu-bar-poc.trex`의 `source-location`을 실제 주소와 맞춘다.
-3. Tableau Desktop에 Extension을 추가해 메인 링크 이동을 확인한다.
+2. `tableau-menu-bar-poc.trex`의 `source-location`을 실제 주소에 맞춘다.
+3. Tableau Desktop에서 Extension을 추가해 메뉴 이동과 active 표시를 확인한다.
 
 ### Cloud
 
-1. GitHub Pages 등 HTTPS 정적 호스팅으로 배포한다.
-2. Tableau Cloud의 Extension 허용 정책 또는 safelist 여부를 확인한다.
-3. `메인` 항목 클릭 시 현재 탭 전체가 이동하는지 확인한다.
+1. GitHub Pages로 `docs/`를 배포한다.
+2. Tableau Cloud에서 Extension 허용 정책과 safelist 여부를 확인한다.
+3. 메뉴 클릭 시 현재 탭 이동과 dashboard name 기반 active 표시를 확인한다.
 
 ## 주의
 
-- 현재 `trex`는 GitHub Pages 기준 초안이다.
-- 실제 배포 URL이 달라지면 `source-location` 수정이 필요하다.
-- Extension 이동은 URL 이동이라 페이지 전체 로딩이 발생한다.
-- 같은 게시글 내부의 부드러운 전환은 Extension이 아니라 Tableau 쪽 구조가 담당한다.
+- Tableau 외부 단독 페이지에서는 실제 dashboard name을 읽을 수 없다.
+- Tableau Cloud/Server 로그인 상태에 따라 이동 시 로그인 화면이 먼저 나올 수 있다.
+- Extension 기반 이동은 링크 이동이므로 페이지 전체 로딩은 남는다.
