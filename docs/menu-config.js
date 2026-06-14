@@ -80,7 +80,7 @@ window.TABLEAU_MENU_CONFIG = [
       },
       {
         label: "손익 상세",
-        dashboardName: ["1. 제조원가", "2. 철근수익성"],
+        dashboardName: ["1. 제조원가", "2. 철근수익성", "상세 - 철근수익성"],
         kind: "entry",
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17809066476870/1_",
       },
