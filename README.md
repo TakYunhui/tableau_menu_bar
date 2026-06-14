@@ -10,7 +10,6 @@ Tableau Dashboard Extension 기반 메뉴바 POC 저장소.
   - 속보
 - 영업
   - 영업 메인
-  - 영업 상세
 - 생산
   - 생산 메인
 - 구매

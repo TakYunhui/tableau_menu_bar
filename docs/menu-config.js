@@ -33,10 +33,6 @@ window.TABLEAU_MENU_CONFIG = [
         kind: "entry",
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/2_17805514108510/1_",
       },
-      {
-        label: "영업 상세",
-        kind: "planned",
-      },
     ],
     activeMatchers: ["/views/2_17805514108510/"],
   },
