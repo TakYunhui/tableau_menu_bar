@@ -22,7 +22,14 @@ window.TABLEAU_MENU_CONFIG = [
     children: [
       {
         label: "영업 메인",
-        dashboardNames: ["1. 영업 현황", "2. 민수 현황", "3. 관수 현황"],
+        dashboardNames: [
+          "1. 영업 현황",
+          "2. 민수 현황",
+          "3. 관수 현황",
+          "상세 - 프로젝트 DC 추이",
+          "상세 - 민수 프로젝트",
+          "상세 - 관수 프로젝트",
+        ],
         kind: "entry",
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/2_17805514108510/1_",
       },
@@ -77,7 +84,7 @@ window.TABLEAU_MENU_CONFIG = [
       },
       {
         label: "손익 상세",
-        dashboardName: "1. 손익 상세: 제조원가",
+        dashboardName: ["1. 제조원가", "2. 철근수익성"],
         kind: "entry",
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17809066476870/1_",
       },
