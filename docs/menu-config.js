@@ -86,7 +86,7 @@ window.TABLEAU_MENU_CONFIG = [
       },
       {
         label: "인사 상세",
-        dashboardName: ["1. 인사상세"],
+        dashboardName: ["1. 인사상세", "상세 - 직원리스트"],
         kind: "planned",
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17813683386770/1__1,",
       },
