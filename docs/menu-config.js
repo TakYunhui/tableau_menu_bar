@@ -7,7 +7,7 @@ window.TABLEAU_MENU_CONFIG = [
     children: [
       {
         label: "속보",
-        dashboardNames: ["1. 속보"],
+        dashboardNames: ["1. 속보", "2. 일일원가"],
         kind: "entry",
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17812256452380/1_",
       },
@@ -80,13 +80,13 @@ window.TABLEAU_MENU_CONFIG = [
       },
       {
         label: "손익 상세",
-        dashboardName: ["1. 제조원가", "2. 철근수익성", "상세 - 철근수익성"],
+        dashboardNames: ["1. 제조원가", "2. 철근수익성", "상세 - 철근수익성"],
         kind: "entry",
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17809066476870/1_",
       },
       {
         label: "인사 상세",
-        dashboardName: ["1. 인사상세", "상세 - 직원리스트"],
+        dashboardNames: ["1. 인사상세", "상세 - 직원리스트"],
         kind: "planned",
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_17813683386770/1__1,",
       },
