@@ -1,7 +1,6 @@
 const MENU_CONFIG = window.TABLEAU_MENU_CONFIG || [];
 
 const state = {
-  openItemId: null,
   currentDashboardName: "",
 };
 
@@ -124,17 +123,7 @@ function moveSameTab(targetUrl, label) {
   window.open(targetUrl, "_self");
 }
 
-function toggleGroup(itemId) {
-  if (state.openItemId === itemId) {
-    state.openItemId = null;
-  } else {
-    state.openItemId = itemId;
-  }
-
-  renderMenu();
-}
-
-function isTreeItem(item) {
+function hasVisibleChildren(item) {
   return item.id === "finance-hr";
 }
 
@@ -196,16 +185,15 @@ function createChildItem(child, isCurrent) {
 }
 
 function createGroup(item, currentMatch) {
-  const isTree = isTreeItem(item);
+  const hasChildrenPanel = hasVisibleChildren(item);
   const group = document.createElement("article");
-  const isOpen = isTree && state.openItemId === item.id;
   const isCurrentGroup = currentMatch.itemId === item.id;
-  group.className = `menu-group${isCurrentGroup ? " is-active" : ""}${isOpen ? " is-open" : ""}`;
+  group.className = `menu-group${isCurrentGroup ? " is-active" : ""}`;
 
   const toggle = document.createElement("button");
   toggle.type = "button";
   toggle.className = "menu-toggle";
-  toggle.setAttribute("aria-expanded", String(isOpen));
+  toggle.setAttribute("aria-expanded", String(false));
 
   const copy = document.createElement("div");
   copy.className = "menu-copy";
@@ -220,7 +208,7 @@ function createGroup(item, currentMatch) {
   heading.appendChild(title);
   copy.appendChild(heading);
 
-  if (isCurrentGroup && !isOpen) {
+  if (isCurrentGroup && !hasChildrenPanel) {
     const status = document.createElement("span");
     status.className = "menu-current-badge";
     status.textContent = "현재";
@@ -229,16 +217,7 @@ function createGroup(item, currentMatch) {
 
   toggle.appendChild(copy);
 
-  if (isTree) {
-    toggle.addEventListener("click", () => {
-      toggleGroup(item.id);
-    });
-
-    const arrow = document.createElement("span");
-    arrow.className = `menu-arrow${isOpen ? " is-open" : ""}`;
-    arrow.textContent = "›";
-    toggle.appendChild(arrow);
-  } else {
+  if (!hasChildrenPanel) {
     const primaryChild = getPrimaryChild(item);
     toggle.addEventListener("click", () => {
       moveSameTab(primaryChild?.url, primaryChild?.label || item.label);
@@ -247,13 +226,12 @@ function createGroup(item, currentMatch) {
 
   group.appendChild(toggle);
 
-  if (!isTree) {
+  if (!hasChildrenPanel) {
     return group;
   }
 
   const panel = document.createElement("div");
   panel.className = "group-panel";
-  panel.hidden = !isOpen;
 
   (item.children || []).forEach((child) => {
     panel.appendChild(createChildItem(child, isCurrentGroup && currentMatch.childLabel === child.label));
@@ -265,10 +243,6 @@ function createGroup(item, currentMatch) {
 
 function renderMenu() {
   const currentMatch = getCurrentMatch();
-
-  if (state.openItemId === null && currentMatch.itemId && isTreeItem(MENU_CONFIG.find((item) => item.id === currentMatch.itemId) || {})) {
-    state.openItemId = currentMatch.itemId;
-  }
 
   menuRootEl.innerHTML = "";
 
