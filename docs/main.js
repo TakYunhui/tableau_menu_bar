@@ -134,6 +134,14 @@ function toggleGroup(itemId) {
   renderMenu();
 }
 
+function isTreeItem(item) {
+  return item.id === "finance-hr";
+}
+
+function getPrimaryChild(item) {
+  return (item.children || [])[0] || null;
+}
+
 function createIcon(iconKey) {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("viewBox", "0 0 24 24");
@@ -188,8 +196,9 @@ function createChildItem(child, isCurrent) {
 }
 
 function createGroup(item, currentMatch) {
+  const isTree = isTreeItem(item);
   const group = document.createElement("article");
-  const isOpen = state.openItemId === item.id;
+  const isOpen = isTree && state.openItemId === item.id;
   const isCurrentGroup = currentMatch.itemId === item.id;
   group.className = `menu-group${isCurrentGroup ? " is-active" : ""}${isOpen ? " is-open" : ""}`;
 
@@ -197,9 +206,6 @@ function createGroup(item, currentMatch) {
   toggle.type = "button";
   toggle.className = "menu-toggle";
   toggle.setAttribute("aria-expanded", String(isOpen));
-  toggle.addEventListener("click", () => {
-    toggleGroup(item.id);
-  });
 
   const copy = document.createElement("div");
   copy.className = "menu-copy";
@@ -223,12 +229,27 @@ function createGroup(item, currentMatch) {
 
   toggle.appendChild(copy);
 
-  const arrow = document.createElement("span");
-  arrow.className = `menu-arrow${isOpen ? " is-open" : ""}`;
-  arrow.textContent = "›";
-  toggle.appendChild(arrow);
+  if (isTree) {
+    toggle.addEventListener("click", () => {
+      toggleGroup(item.id);
+    });
+
+    const arrow = document.createElement("span");
+    arrow.className = `menu-arrow${isOpen ? " is-open" : ""}`;
+    arrow.textContent = "›";
+    toggle.appendChild(arrow);
+  } else {
+    const primaryChild = getPrimaryChild(item);
+    toggle.addEventListener("click", () => {
+      moveSameTab(primaryChild?.url, primaryChild?.label || item.label);
+    });
+  }
 
   group.appendChild(toggle);
+
+  if (!isTree) {
+    return group;
+  }
 
   const panel = document.createElement("div");
   panel.className = "group-panel";
@@ -245,7 +266,7 @@ function createGroup(item, currentMatch) {
 function renderMenu() {
   const currentMatch = getCurrentMatch();
 
-  if (state.openItemId === null) {
+  if (state.openItemId === null && currentMatch.itemId && isTreeItem(MENU_CONFIG.find((item) => item.id === currentMatch.itemId) || {})) {
     state.openItemId = currentMatch.itemId;
   }
 
