@@ -5,8 +5,6 @@ const state = {
 };
 
 const menuRootEl = document.getElementById("menu-root");
-const mockCurrentUrl = new URLSearchParams(window.location.search).get("mockCurrentUrl");
-const mockDashboardName = new URLSearchParams(window.location.search).get("mockDashboardName");
 
 function normalizeUrl(rawUrl) {
   if (!rawUrl) {
@@ -19,10 +17,6 @@ function normalizeUrl(rawUrl) {
 }
 
 function getCurrentUrl() {
-  if (mockCurrentUrl) {
-    return mockCurrentUrl;
-  }
-
   try {
     if (window.top && window.top.location && window.top.location.href) {
       return window.top.location.href;
@@ -39,10 +33,6 @@ function normalizeDashboardName(rawName) {
 }
 
 function getCurrentDashboardName() {
-  if (mockDashboardName) {
-    return normalizeDashboardName(mockDashboardName);
-  }
-
   return normalizeDashboardName(state.currentDashboardName);
 }
 
@@ -157,7 +147,7 @@ function createIcon(iconKey) {
   return svg;
 }
 
-function createChildItem(child, isCurrent) {
+function createChildItem(child, isCurrent, showBranchMarker) {
   const row = document.createElement("button");
   row.type = "button";
   row.className = `child-row${isCurrent ? " is-current" : ""}`;
@@ -168,17 +158,21 @@ function createChildItem(child, isCurrent) {
   const textWrap = document.createElement("div");
   textWrap.className = "child-copy";
 
+  const labelWrap = document.createElement("div");
+  labelWrap.className = "child-label-wrap";
+
+  if (showBranchMarker) {
+    const branch = document.createElement("span");
+    branch.className = "child-branch";
+    branch.textContent = "↳";
+    labelWrap.appendChild(branch);
+  }
+
   const label = document.createElement("span");
   label.className = "child-label";
   label.textContent = child.label;
-  textWrap.appendChild(label);
-
-  if (isCurrent) {
-    const meta = document.createElement("span");
-    meta.className = "child-meta";
-    meta.textContent = "현재";
-    textWrap.appendChild(meta);
-  }
+  labelWrap.appendChild(label);
+  textWrap.appendChild(labelWrap);
 
   row.appendChild(textWrap);
   return row;
@@ -208,7 +202,7 @@ function createGroup(item, currentMatch) {
   heading.appendChild(title);
   copy.appendChild(heading);
 
-  if (isCurrentGroup && !hasChildrenPanel) {
+  if (isCurrentGroup) {
     const status = document.createElement("span");
     status.className = "menu-current-badge";
     status.textContent = "현재";
@@ -234,7 +228,7 @@ function createGroup(item, currentMatch) {
   panel.className = "group-panel";
 
   (item.children || []).forEach((child) => {
-    panel.appendChild(createChildItem(child, isCurrentGroup && currentMatch.childLabel === child.label));
+    panel.appendChild(createChildItem(child, isCurrentGroup && currentMatch.childLabel === child.label, true));
   });
 
   group.appendChild(panel);

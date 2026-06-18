@@ -12,10 +12,10 @@
   --icon: #c0cad8;
   --icon-active: #ffffff;
   --shadow: 0 10px 24px rgba(98, 117, 153, 0.12);
-  --subpanel-bg: #6b84a3;
-  --subpanel-row-hover: rgba(255, 255, 255, 0.12);
-  --subpanel-text: #f7fbff;
-  --subpanel-muted: #d7e4f2;
+  --subpanel-bg: #edf4ff;
+  --subpanel-row-hover: rgba(63, 118, 246, 0.05);
+  --subpanel-text: #5e6878;
+  --subpanel-muted: #9eb0c7;
   --current-accent: #6ec4ff;
   --current-accent-soft: rgba(110, 196, 255, 0.16);
   --current-group-bg: #e6efff;
@@ -179,8 +179,8 @@ button {
 
 .group-panel {
   display: grid;
-  gap: 2px;
-  padding: 0;
+  gap: 0;
+  padding: 4px 0 8px 6px;
   background: var(--subpanel-bg);
 }
 
@@ -191,9 +191,9 @@ button {
 .child-row {
   display: block;
   width: 100%;
-  padding: 14px 18px 14px 22px;
+  padding: 12px 18px 12px 14px;
   border: 0;
-  border-left: 4px solid transparent;
+  border-left: 3px solid transparent;
   border-radius: 0;
   background: transparent;
   color: var(--subpanel-text);
@@ -209,13 +209,23 @@ button {
   border-left-color: var(--hover-accent);
 }
 
-.menu-group.is-open .group-panel,
-.menu-group.is-active .group-panel {
-  background: var(--subpanel-bg);
+.child-copy {
+  display: grid;
+  gap: 4px;
 }
 
-.child-copy {
-  display: block;
+.child-label-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.child-branch {
+  color: var(--subpanel-text);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  flex: none;
 }
 
 .child-label {
@@ -224,6 +234,7 @@ button {
   font-weight: 600;
   line-height: 1.4;
   word-break: keep-all;
+  color: var(--text-strong);
 }
 
 .child-meta {
@@ -235,18 +246,18 @@ button {
   font-weight: 700;
 }
 
-.child-row {
-  border-left-color: rgba(255, 255, 255, 0.18);
-}
-
 .child-row.is-current {
-  background: var(--current-accent-soft);
-  border-left-color: var(--current-accent);
-  color: #f4fbff;
+  background: transparent;
+  border-left-color: transparent;
+  color: var(--current-group-text);
 }
 
 .child-row.is-current .child-label {
-  color: #f4fbff;
+  color: var(--current-group-text);
+}
+
+.child-row.is-current .child-branch {
+  color: var(--current-group-text);
 }
 
 .child-row.is-current:hover {
