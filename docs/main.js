@@ -211,12 +211,10 @@ function createGroup(item, currentMatch) {
 
   toggle.appendChild(copy);
 
-  if (!hasChildrenPanel) {
-    const primaryChild = getPrimaryChild(item);
-    toggle.addEventListener("click", () => {
-      moveSameTab(primaryChild?.url, primaryChild?.label || item.label);
-    });
-  }
+  const primaryChild = getPrimaryChild(item);
+  toggle.addEventListener("click", () => {
+    moveSameTab(primaryChild?.url, primaryChild?.label || item.label);
+  });
 
   group.appendChild(toggle);
 
@@ -227,7 +225,7 @@ function createGroup(item, currentMatch) {
   const panel = document.createElement("div");
   panel.className = "group-panel";
 
-  (item.children || []).forEach((child) => {
+  (item.children || []).slice(1).forEach((child) => {
     panel.appendChild(createChildItem(child, isCurrentGroup && currentMatch.childLabel === child.label, true));
   });
 
