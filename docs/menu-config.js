@@ -31,7 +31,7 @@ window.TABLEAU_MENU_CONFIG = [
           "상세 - 관수 프로젝트",
         ],
         kind: "entry",
-        url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/2_17805514108510/1_",
+        url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/1__V2/1_",
       },
     ],
     activeMatchers: ["/views/2_17805514108510/"],
