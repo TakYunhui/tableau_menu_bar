@@ -9,7 +9,7 @@ window.TABLEAU_MENU_CONFIG = [
         label: "속보",
         dashboardNames: ["1. 속보", "2. 일일원가"],
         kind: "entry",
-        url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/0__v2/1_",
+        url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/0__v3/1_",
       },
     ],
     activeMatchers: ["/views/_17812256452380/"],
