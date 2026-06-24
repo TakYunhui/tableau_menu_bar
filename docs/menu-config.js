@@ -7,7 +7,7 @@ window.TABLEAU_MENU_CONFIG = [
     children: [
       {
         label: "속보",
-        dashboardNames: ["1. 속보", "2. 일일원가"],
+        dashboardNames: ["1. 속보", "2. 일일원가", "3. 재고현황"],
         kind: "entry",
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/0__v3/1_",
       },
@@ -74,7 +74,7 @@ window.TABLEAU_MENU_CONFIG = [
     children: [
       {
         label: "손익재무인사 메인",
-        dashboardNames: ["1. 손익재무요약", "2. 재무현황", "3. 인사현황"],
+        dashboardNames: ["1. 손익재무요약", "2. 예적금현황", "3. 인사현황"],
         kind: "entry",
         url: "https://prod-apnortheast-a.online.tableau.com/t/kisco/views/_V2_17811391757600/1_",
       },
